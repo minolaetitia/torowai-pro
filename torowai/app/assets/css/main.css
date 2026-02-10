@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6B46C1;
+  --primary-light: #9F7AEA;
+  --secondary: #3182CE;
+  --secondary-light: #63B3ED;
+  --background: #F7FAFC;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+}
+
+body {
+  @apply font-sans bg-[#F7FAFC] text-[#2D3748];
+}
+
+.primary-btn {
+  @apply bg-[#6B46C1] text-white hover:bg-[#553C9A] hover:shadow-md;
+}
+
+.secondary-btn {
+  @apply bg-[#3182CE] text-white hover:bg-[#2B6CB0] hover:shadow-md;
+}
+
+.outline-btn {
+  @apply bg-transparent border-2 border-[#6B46C1] text-[#6B46C1] hover:bg-purple-50;
+}
