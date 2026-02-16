@@ -1,35 +1,35 @@
 export interface Question {
   id: number;
   text: string;
-  category: 'analyste' | 'diplomate' | 'explorateur' | 'commandant';
+  category: 'melancolique' | 'flegmatique' | 'sanguin' | 'colerique';
 }
 
 export const questions: Question[] = [
-  // Analyste (Logique, Structure, Détails)
-  { id: 1, text: "J'aime que les choses soient organisées et planifiées à l'avance.", category: 'analyste' },
-  { id: 2, text: "Je prends mes décisions en me basant sur des faits et des données logiques.", category: 'analyste' },
-  { id: 3, text: "Je suis attentif aux détails que les autres ont tendance à ignorer.", category: 'analyste' },
-  { id: 4, text: "J'ai besoin de comprendre le 'pourquoi' technique des choses.", category: 'analyste' },
-  { id: 5, text: "Le désordre ou l'improvisation me stressent facilement.", category: 'analyste' },
+  // Mélancolique (Sensibilité émotionnelle, tristesse, perfectionnisme anxieux, introspection)
+  { id: 1, text: "Je ressens souvent une certaine tristesse ou mélancolie sans raison apparente.", category: 'melancolique' },
+  { id: 2, text: "Je suis très perfectionniste et je me critique sévèrement quand je fais des erreurs.", category: 'melancolique' },
+  { id: 3, text: "J'ai tendance à ruminer mes pensées et à analyser profondément mes émotions.", category: 'melancolique' },
+  { id: 4, text: "Je suis hypersensible aux critiques et j'ai du mal à les oublier.", category: 'melancolique' },
+  { id: 5, text: "Je préfère la solitude et les moments d'introspection aux grandes fêtes bruyantes.", category: 'melancolique' },
 
-  // Diplomate (Empathie, Harmonie, Relations)
-  { id: 6, text: "Je suis très sensible aux émotions des personnes qui m'entourent.", category: 'diplomate' },
-  { id: 7, text: "L'harmonie du groupe est plus importante pour moi que d'avoir raison.", category: 'diplomate' },
-  { id: 8, text: "On dit souvent de moi que je suis une personne à l'écoute et bienveillante.", category: 'diplomate' },
-  { id: 9, text: "Je ferais tout pour éviter un conflit direct avec un proche.", category: 'diplomate' },
-  { id: 10, text: "J'ai besoin de me sentir entouré et soutenu pour m'épanouir.", category: 'diplomate' },
+  // Flegmatique (Calme émotionnel, lenteur, patience, stabilité, évitement)
+  { id: 6, text: "Je reste calme et imperturbable même dans des situations stressantes.", category: 'flegmatique' },
+  { id: 7, text: "Je prends mon temps pour agir et on me dit souvent que je suis trop lent.", category: 'flegmatique' },
+  { id: 8, text: "J'évite les conflits à tout prix et je préfère ne pas m'impliquer dans les disputes.", category: 'flegmatique' },
+  { id: 9, text: "J'ai une patience remarquable et je peux attendre longtemps sans m'énerver.", category: 'flegmatique' },
+  { id: 10, text: "Je suis stable et prévisible, j'aime ma routine confortable.", category: 'flegmatique' },
 
-  // Explorateur (Créativité, Spontanéité, Enthousiasme)
-  { id: 11, text: "J'aime essayer de nouvelles expériences, même si elles sont risquées.", category: 'explorateur' },
-  { id: 12, text: "Je m'ennuie rapidement si je dois faire la même tâche tous les jours.", category: 'explorateur' },
-  { id: 13, text: "Je suis souvent celui qui apporte de nouvelles idées originales dans un groupe.", category: 'explorateur' },
-  { id: 14, text: "J'agis souvent sur un coup de tête, suivant mon intuition du moment.", category: 'explorateur' },
-  { id: 15, text: "Le changement est pour moi une source d'excitation plutôt que de peur.", category: 'explorateur' },
+  // Sanguin (Sociabilité extravertie, optimisme, recherche de plaisir, légèreté, impulsivité joyeuse)
+  { id: 11, text: "Je suis l'âme de la fête et j'adore être entouré de beaucoup de monde.", category: 'sanguin' },
+  { id: 12, text: "Je suis naturellement optimiste et je vois toujours le bon côté des choses.", category: 'sanguin' },
+  { id: 13, text: "Je recherche activement les plaisirs et les divertissements dans ma vie.", category: 'sanguin' },
+  { id: 14, text: "Je suis spontané et j'agis souvent par impulsion sans trop réfléchir aux conséquences.", category: 'sanguin' },
+  { id: 15, text: "J'ai beaucoup d'énergie et d'enthousiasme que je communique facilement aux autres.", category: 'sanguin' },
 
-  // Commandant (Action, Résultats, Influence)
-  { id: 16, text: "Je me sens à l'aise lorsqu'il s'agit de prendre des décisions pour un groupe.", category: 'commandant' },
-  { id: 17, text: "Mon principal moteur est d'atteindre mes objectifs et de voir des résultats concrets.", category: 'commandant' },
-  { id: 18, text: "Je n'hésite pas à dire ce que je pense, même si cela peut déplaire.", category: 'commandant' },
-  { id: 19, text: "En situation de crise, je garde mon sang-froid et je prends les commandes.", category: 'commandant' },
-  { id: 20, text: "Je préfère diriger plutôt que de suivre les directives des autres.", category: 'commandant' },
+  // Colérique (Colère rapide, domination, ambition intense, décisions brutales, passion)
+  { id: 16, text: "Je me mets facilement en colère quand les choses ne vont pas comme je veux.", category: 'colerique' },
+  { id: 17, text: "J'aime avoir le contrôle et j'ai tendance à dominer dans mes relations.", category: 'colerique' },
+  { id: 18, text: "Je suis extrêmement ambitieux et je ferai tout pour atteindre mes objectifs.", category: 'colerique' },
+  { id: 19, text: "Je prends des décisions rapides et je n'aime pas qu'on me contredise.", category: 'colerique' },
+  { id: 20, text: "Je suis passionné et intense dans tout ce que je fais, sans demi-mesure.", category: 'colerique' },
 ];

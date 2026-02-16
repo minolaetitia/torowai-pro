@@ -1,5 +1,10 @@
 <script setup lang="ts">
-// No complex logic needed for landing page
+const scrollToBenefits = () => {
+  const benefitsSection = document.getElementById('benefits-section')
+  if (benefitsSection) {
+    benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
 </script>
 
 <template>
@@ -12,23 +17,18 @@
           Mieux te comprendre pour <span class="text-[#6B46C1]">mieux avancer</span>
         </h1>
         <p class="hero-subtitle">
-          Découvre ton tempérament et ton mode de fonctionnement naturel grâce à notre approche bienveillante et scientifique.
+          Découvre ton tempérament et ton type de personnalité grâce à notre approche bienveillante et scientifique.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <NuxtLink to="/test">
-            <BaseButton variant="primary" class="px-10 py-4 text-lg">
-              Découvrir mon tempérament
-            </BaseButton>
-          </NuxtLink>
-          <BaseButton variant="ghost" class="text-gray-500">
-            En savoir plus
+          <BaseButton variant="ghost" class="text-gray-500" @click="scrollToBenefits">
+            Découvrir les modules
           </BaseButton>
         </div>
       </div>
     </section>
 
     <!-- Benefits Section -->
-    <section class="benefits-section bg-white py-20">
+    <section id="benefits-section" class="benefits-section bg-white py-20">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="section-title">Pourquoi faire ce test ?</h2>
@@ -62,6 +62,119 @@
       </div>
     </section>
 
+    <!-- Modules Section -->
+    <section class="modules-section py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="tagline !bg-purple-50 !text-purple-700">Nos modules d'évaluation</span>
+          <h2 class="section-title mt-4 mb-4">Deux approches complémentaires</h2>
+          <p class="text-gray-500 max-w-2xl mx-auto">
+            Chaque module explore un aspect différent de ta personnalité pour une compréhension globale et profonde.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Module 1: Tempérament -->
+          <BaseCard class="!p-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Icon name="heroicons:fire" class="w-8 h-8" />
+                </div>
+                <div>
+                  <span class="text-sm opacity-90 font-medium">Module 1</span>
+                  <h3 class="text-2xl font-bold">Tempéraments</h3>
+                </div>
+              </div>
+              <p class="text-purple-50 mb-6 leading-relaxed">
+                Découvre ton énergie naturelle et ta dynamique comportementale selon la théorie des 4 tempéraments d'Hippocrate.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Colérique</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Sanguin</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Mélancolique</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Flegmatique</span>
+              </div>
+            </div>
+            <div class="p-6 bg-white">
+              <div class="flex items-center gap-3 text-sm text-gray-600 mb-4">
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:clock" class="w-4 h-4" />
+                  <span>10 min</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:document-text" class="w-4 h-4" />
+                  <span>20 questions</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:sparkles" class="w-4 h-4 text-green-500" />
+                  <span class="text-green-600 font-medium">Freemium</span>
+                </div>
+              </div>
+              <NuxtLink to="/test">
+                <BaseButton variant="primary" class="w-full">
+                  Commencer le test
+                  <Icon name="heroicons:arrow-right" class="w-4 h-4" />
+                </BaseButton>
+              </NuxtLink>
+            </div>
+          </BaseCard>
+
+          <!-- Module 2: MBTI -->
+          <BaseCard class="!p-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gradient-to-br from-teal-500 to-cyan-600 p-8 text-white">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Icon name="heroicons:puzzle-piece" class="w-8 h-8" />
+                </div>
+                <div>
+                  <span class="text-sm opacity-90 font-medium">Module 2</span>
+                  <h3 class="text-2xl font-bold">Profil MBTI</h3>
+                </div>
+              </div>
+              <p class="text-teal-50 mb-6 leading-relaxed">
+                Identifie ton type de personnalité parmi les 16 profils MBTI et comprends tes préférences cognitives.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Analystes</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Diplomates</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Sentinelles</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Explorateurs</span>
+              </div>
+            </div>
+            <div class="p-6 bg-white">
+              <div class="flex items-center gap-3 text-sm text-gray-600 mb-4">
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:clock" class="w-4 h-4" />
+                  <span>10 min</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:document-text" class="w-4 h-4" />
+                  <span>20 questions</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:sparkles" class="w-4 h-4 text-green-500" />
+                  <span class="text-green-600 font-medium">Freemium</span>
+                </div>
+              </div>
+              <NuxtLink to="/mbti/test">
+                <BaseButton variant="primary" class="w-full">
+                  Commencer le test
+                  <Icon name="heroicons:arrow-right" class="w-4 h-4" />
+                </BaseButton>
+              </NuxtLink>
+            </div>
+          </BaseCard>
+        </div>
+
+        <div class="text-center mt-12">
+          <p class="text-gray-500 text-sm italic">
+            💡 Ces deux modules sont complémentaires et t'offrent une vision complète de ta personnalité
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Pedagogy Section -->
     <section class="pedagogy-section py-20 bg-[#6B46C1] text-white overflow-hidden relative">
       <div class="container mx-auto px-6 relative z-10">
@@ -70,11 +183,9 @@
           <p class="text-purple-100 text-lg mb-10 leading-relaxed">
             Ce test n’est pas un diagnostic médical. C'est un outil d'exploration de soi conçu pour t'apporter de la clarté, sans jamais t'enfermer dans une étiquette rigide. Nous croyons en ton potentiel d'évolution.
           </p>
-          <NuxtLink to="/test">
-            <BaseButton variant="outline" class="!border-white !text-white hover:!bg-white hover:!text-purple-900 px-10">
-              Commencer le test gratuitement
-            </BaseButton>
-          </NuxtLink>
+          <BaseButton variant="outline" class="!border-white !text-white hover:!bg-white hover:!text-purple-900 px-10" @click="scrollToBenefits">
+            Découvrir les modules
+          </BaseButton>
         </div>
       </div>
       <!-- Decorative circles -->
@@ -84,7 +195,8 @@
 
     <!-- Footer -->
     <footer class="py-10 text-center text-gray-400 text-sm">
-      <p>&copy; 2025 Torowai - Le guide intelligent pour trouver ton chemin.</p>
+      <p>&copy; {{ new Date().getFullYear() }} Torowai - Le guide intelligent pour trouver ton chemin.</p>
+      <p class="mt-2">&copy; Fidèle Rabearimanana</p>
     </footer>
   </div>
 </template>

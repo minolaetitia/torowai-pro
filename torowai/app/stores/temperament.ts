@@ -46,10 +46,10 @@ export const useTemperamentStore = defineStore('temperament', {
     },
     calculateResults() {
       const scores = {
-        analyste: 0,
-        diplomate: 0,
-        explorateur: 0,
-        commandant: 0,
+        melancolique: 0,
+        flegmatique: 0,
+        sanguin: 0,
+        colerique: 0,
       };
 
       questions.forEach(q => {

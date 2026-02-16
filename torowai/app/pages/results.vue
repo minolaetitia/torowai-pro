@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { useTemperamentStore } from '~/stores/temperament';
+import { usePremiumStore } from '~/stores/premium';
 import { temperaments } from '~/data/temperaments';
 import { useRouter } from 'vue-router';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const store = useTemperamentStore();
+const premiumStore = usePremiumStore();
 const router = useRouter();
+const showUnlockModal = ref(false);
 
 onMounted(() => {
   if (!store.results) {
     // If no results, redirect to landing or test
     router.push('/');
   }
+  // Check premium status on mount
+  premiumStore.checkPremiumStatus();
 });
 
 const primary = store.results ? temperaments[store.results.primary] : null;
@@ -120,7 +125,7 @@ const getScorePercentage = (score: number) => {
           <div>
             <h3 class="text-xl font-bold text-purple-900 mb-2">L'influence du {{ secondary.name }}</h3>
             <p class="text-purple-700 leading-relaxed">
-              En plus de ton tempérament dominant, tu possèdes des traits caractéristiques du {{ secondary.name.toLowerCase() }}. Cela signifie que dans certaines situations, notamment {{ secondary.id === 'analyste' ? 'lors de tâches demandant de la réflexion' : 'lors de tes interactions sociales' }}, tu sauras faire preuve de {{ secondary.strengths[0].toLowerCase() }}.
+              En plus de ton tempérament dominant, tu possèdes des traits caractéristiques du {{ secondary.name.toLowerCase() }}. Cela signifie que dans certaines situations, notamment {{ secondary.id === 'melancolique' ? 'lors de tâches demandant de la réflexion' : 'lors de tes interactions sociales' }}, tu sauras faire preuve de {{ secondary.strengths[0].toLowerCase() }}.
             </p>
           </div>
         </div>
@@ -157,9 +162,23 @@ const getScorePercentage = (score: number) => {
         </div>
 
         <div class="text-center">
-          <BaseButton variant="primary" class="px-12 py-5 text-xl shadow-xl shadow-purple-200">
+          <BaseButton
+            v-if="!premiumStore.isPremium"
+            variant="primary"
+            class="px-12 py-5 text-xl shadow-xl shadow-purple-200"
+            @click="showUnlockModal = true"
+          >
             Débloquer mon profil complet
           </BaseButton>
+          <NuxtLink v-else to="/pcm/test">
+            <BaseButton
+              variant="primary"
+              class="px-12 py-5 text-xl shadow-xl shadow-purple-200"
+            >
+              <Icon name="heroicons:arrow-right" class="w-6 h-6" />
+              Continuer vers le PCM
+            </BaseButton>
+          </NuxtLink>
         </div>
       </div>
       
@@ -170,6 +189,9 @@ const getScorePercentage = (score: number) => {
         </BaseButton>
       </div>
     </div>
+
+    <!-- Unlock Modal -->
+    <UnlockModal v-model="showUnlockModal" />
   </div>
 </template>
 

@@ -10,43 +10,43 @@ export interface TemperamentInfo {
 }
 
 export const temperaments: Record<string, TemperamentInfo> = {
-  analyste: {
-    id: 'analyste',
-    name: 'L\'Analyste',
-    description: "Précis, logique et structuré, tu excelles dans l'organisation et la compréhension technique du monde.",
-    strengths: ["Sens de l'organisation", "Rigueur logique", "Attention aux détails", "Fiabilité"],
-    challenges: ["Besoin excessif de contrôle", "Difficulté face à l'imprévu", "Tendance au perfectionnisme"],
-    needs: ["Structure et planification", "Faits concrets", "Reconnaissance du travail bien fait"],
+  melancolique: {
+    id: 'melancolique',
+    name: 'Mélancolique',
+    description: "Sensible et introspectif, tu ressens les émotions profondément. Perfectionniste anxieux, tu es créatif mais porté à la tristesse et à la rumination.",
+    strengths: ["Profondeur émotionnelle", "Créativité artistique", "Perfectionnisme", "Sensibilité", "Capacité d'introspection"],
+    challenges: ["Tendance à la tristesse", "Autocritique excessive", "Anxiété", "Difficulté à lâcher prise", "Hypersensibilité aux critiques"],
+    needs: ["Temps de solitude", "Expression créative", "Compréhension émotionnelle", "Beauté et harmonie", "Validation affective"],
     icon: "heroicons:clipboard-document-check",
     color: "bg-blue-500"
   },
-  diplomate: {
-    id: 'diplomate',
-    name: 'Le Diplomate',
-    description: "Chaleureux et empathique, tu es le ciment qui unit les gens et crée l'harmonie autour de toi.",
-    strengths: ["Empathie naturelle", "Capacité d'écoute", "Sensibilité relationnelle", "Bienveillance"],
-    challenges: ["Difficulté à dire non", "Peur du conflit", "Oubli de ses propres besoins"],
-    needs: ["Harmonie relationnelle", "Sentiment d'appartenance", "Échanges authentiques"],
+  flegmatique: {
+    id: 'flegmatique',
+    name: 'Flegmatique',
+    description: "Calme et imperturbable, tu gardes ton sang-froid en toutes circonstances. Patient et stable, tu évites les conflits et préfères la tranquillité.",
+    strengths: ["Calme émotionnel", "Patience remarquable", "Stabilité", "Capacité d'écoute", "Diplomatie naturelle"],
+    challenges: ["Lenteur d'action", "Procrastination", "Difficulté à s'affirmer", "Tendance à l'inertie", "Manque de motivation"],
+    needs: ["Paix et tranquillité", "Routine stable", "Évitement des conflits", "Temps pour agir", "Environnement harmonieux"],
     icon: "heroicons:heart",
     color: "bg-purple-500"
   },
-  explorateur: {
-    id: 'explorateur',
-    name: 'L\'Explorateur',
-    description: "Créatif et plein d'enthousiasme, tu es toujours prêt pour une nouvelle aventure ou une idée originale.",
-    strengths: ["Créativité débordante", "Adaptabilité", "Enthousiasme communicatif", "Optimisme"],
-    challenges: ["Difficulté de concentration", "Impulsivité", "Éparpillement"],
-    needs: ["Nouveauté et variété", "Liberté d'action", "Stimulation intellectuelle"],
+  sanguin: {
+    id: 'sanguin',
+    name: 'Sanguin',
+    description: "Joyeux et sociable, tu es l'âme de la fête. Optimiste et spontané, tu recherches activement le plaisir et tu communiques ton enthousiasme contagieux.",
+    strengths: ["Sociabilité extravertie", "Optimisme naturel", "Enthousiasme communicatif", "Énergie débordante", "Spontanéité joyeuse"],
+    challenges: ["Impulsivité excessive", "Superficialité", "Difficulté de concentration", "Manque de sérieux", "Recherche constante de stimulation"],
+    needs: ["Interactions sociales fréquentes", "Plaisirs et divertissements", "Nouveauté constante", "Reconnaissance sociale", "Liberté d'expression"],
     icon: "heroicons:rocket-launch",
     color: "bg-amber-500"
   },
-  commandant: {
-    id: 'commandant',
-    name: 'Le Commandant',
-    description: "Déterminé et orienté vers l'action, tu sais prendre des décisions et mener les projets à leur terme.",
-    strengths: ["Leadership naturel", "Efficacité", "Capacité de décision", "Persévérance"],
-    challenges: ["Impatience", "Exigence élevée envers autrui", "Tendance à l'autoritarisme"],
-    needs: ["Résultats concrets", "Autonomie", "Défis à relever"],
+  colerique: {
+    id: 'colerique',
+    name: 'Colérique',
+    description: "Passionné et intense, tu es un leader dominant qui agit avec force. Ambitieux et déterminé, tu te mets rapidement en colère quand on te contrarie.",
+    strengths: ["Leadership autoritaire", "Ambition intense", "Décisions rapides", "Passion", "Détermination sans faille"],
+    challenges: ["Colère rapide", "Autoritarisme", "Impatience extrême", "Domination excessive", "Intolérance à la frustration"],
+    needs: ["Contrôle et pouvoir", "Action immédiate", "Défis stimulants", "Respect et obéissance", "Accomplissement de buts"],
     icon: "heroicons:bolt",
     color: "bg-indigo-600"
   }
