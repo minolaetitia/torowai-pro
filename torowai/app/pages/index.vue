@@ -1,8 +1,28 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { usePremiumStore } from '~/stores/premium'
+import { useRouter } from 'vue-router'
+
+const premiumStore = usePremiumStore()
+const router = useRouter()
+const showUnlockModal = ref(false)
+
+onMounted(() => {
+  premiumStore.checkPremiumStatus()
+})
+
 const scrollToBenefits = () => {
   const benefitsSection = document.getElementById('benefits-section')
   if (benefitsSection) {
     benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+const handlePcmClick = () => {
+  if (premiumStore.isPcmUnlocked) {
+    router.push('/pcm/test')
+  } else {
+    showUnlockModal.value = true
   }
 }
 </script>
@@ -12,7 +32,7 @@ const scrollToBenefits = () => {
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="container mx-auto px-6 py-20 text-center max-w-4xl">
-        <span class="tagline">Torowai : Le guide intelligent</span>
+        <span class="tagline">Torowai : Le guide intelligent pour trouver ton chemin</span>
         <h1 class="hero-title">
           Mieux te comprendre pour <span class="text-[#6B46C1]">mieux avancer</span>
         </h1>
@@ -73,10 +93,10 @@ const scrollToBenefits = () => {
           </p>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <!-- Module 1: Tempérament -->
           <BaseCard class="!p-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-            <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white">
+            <div class="bg-gradient-to-br from-purple-700 to-purple-600 p-8 text-white">
               <div class="flex items-center gap-4 mb-4">
                 <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
                   <Icon name="heroicons:fire" class="w-8 h-8" />
@@ -112,7 +132,7 @@ const scrollToBenefits = () => {
                 </div>
               </div>
               <NuxtLink to="/test">
-                <BaseButton variant="primary" class="w-full">
+                <BaseButton variant="primary" class="w-full hover:shadow-lg hover:scale-105 transition-all duration-300">
                   Commencer le test
                   <Icon name="heroicons:arrow-right" class="w-4 h-4" />
                 </BaseButton>
@@ -158,18 +178,62 @@ const scrollToBenefits = () => {
                 </div>
               </div>
               <NuxtLink to="/mbti/test">
-                <BaseButton variant="primary" class="w-full">
+                <BaseButton variant="secondary" class="bg-gradient-to-br from-teal-500 to-cyan-600 w-full hover:from-teal-600 hover:to-cyan-700 hover:shadow-lg hover:scale-105 transition-all duration-300">
                   Commencer le test
                   <Icon name="heroicons:arrow-right" class="w-4 h-4" />
                 </BaseButton>
               </NuxtLink>
             </div>
           </BaseCard>
+
+          <!-- Module 3: PCM (Premium) -->
+          <BaseCard class="!p-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gradient-to-br from-amber-500 to-orange-600 p-8 text-white">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Icon name="heroicons:chart-bar" class="w-8 h-8" />
+                </div>
+                <div>
+                  <span class="text-sm opacity-90 font-medium">Module 3</span>
+                  <h3 class="text-2xl font-bold">Profil PCM</h3>
+                </div>
+              </div>
+              <p class="text-amber-50 mb-6 leading-relaxed">
+                Découvre ton profil de communication et tes besoins psychologiques avec le modèle Process Communication.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Empathique</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Travaillomane</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Persévérant</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">Promoteur</span>
+              </div>
+            </div>
+            <div class="p-6 bg-white">
+              <div class="flex items-center gap-3 text-sm text-gray-600 mb-4">
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:clock" class="w-4 h-4" />
+                  <span>15 min</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:document-text" class="w-4 h-4" />
+                  <span>30 questions</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <Icon name="heroicons:lock-closed" class="w-4 h-4 text-amber-500" />
+                  <span class="text-amber-600 font-medium">Premium</span>
+                </div>
+              </div>
+              <BaseButton variant="secondary" class="bg-gradient-to-br from-amber-500 to-orange-600 w-full hover:from-amber-600 hover:to-orange-700 hover:shadow-lg hover:scale-105 transition-all duration-300" @click="handlePcmClick">
+                Débloquer le module
+                <Icon name="heroicons:lock-closed" class="w-4 h-4" />
+              </BaseButton>
+            </div>
+          </BaseCard>
         </div>
 
         <div class="text-center mt-12">
           <p class="text-gray-500 text-sm italic">
-            💡 Ces deux modules sont complémentaires et t'offrent une vision complète de ta personnalité
+            💡 Ces trois modules sont complémentaires et t'offrent une vision complète de ta personnalité
           </p>
         </div>
       </div>
@@ -198,6 +262,9 @@ const scrollToBenefits = () => {
       <p>&copy; {{ new Date().getFullYear() }} Torowai - Le guide intelligent pour trouver ton chemin.</p>
       <p class="mt-2">&copy; Fidèle Rabearimanana</p>
     </footer>
+
+    <!-- Unlock Modal -->
+    <UnlockModal v-model="showUnlockModal" />
   </div>
 </template>
 
